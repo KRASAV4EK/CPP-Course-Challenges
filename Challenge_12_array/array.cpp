@@ -32,6 +32,10 @@ int main()
 
     display_info(p_array1, size_1, p_array2, size_2, p_array3);
 
+    delete [] p_array1;
+    delete [] p_array2;
+    delete [] p_array3;
+
     return 0;
 }
 
