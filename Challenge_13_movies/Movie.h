@@ -2,8 +2,15 @@
 #define _MOVIE_H_
 
 #include <string>
+#include <iostream>
+#include <bits/stdc++.h>
+#include "termcolor/termcolor.hpp"
 
 using namespace std;
+
+string get_title();
+string get_rating();
+int get_watched();
 
 class Movie
 {

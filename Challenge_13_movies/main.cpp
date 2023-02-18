@@ -1,15 +1,10 @@
-#include <iostream>
 #include "Movies.h"
-#include "termcolor/termcolor.hpp"
 
 void display_menu();
 void display_question();
 
 char get_command();
-void action_choose(string command, Movies &movies);
-
-void add_movie(Movies &movies);
-void increment_watched(Movies &movies, string name);
+void action_choose(string command, Movies &movies_list);
 
 int main()
 {
@@ -33,7 +28,14 @@ int main()
 void display_menu()
 {
     cout << "\nP - Show my collection"
-         << "\nA - Add the film"
+         << "\nA - Add the film\n"
+         << "\nR - Change rating of the film "
+         << "\nT - Change title of the film "
+         << "\nW - Change watched number of the film \n"
+         << "\nZ - Display watched number from film's title"
+         << "\nX - Display rating from film's title"
+         << "\nC - Display films with certain rating\n"
+         << "\nD - Delete my collection"
          << "\nM - Display the menu"
          << "\nQ - Quit\n";
 }
@@ -50,26 +52,65 @@ char get_command()
     return command;
 }
 
-void action_choose(string command, Movies &movies)
+void action_choose(string command, Movies &movies_list)
 {
     switch (command[0])
     {
-    case 'P':
+    case 'P': // show collection
     case 'p':
-        movies.display();
+        movies_list.display();
         break;
 
-    case 'A':
+    case 'A': // add the film
     case 'a':
-        add_movie(movies);
+        add_movie(movies_list);
         break;
 
-    case 'M':
+    case 'R': // change rating
+    case 'r':
+        movies_list.movies.at(get_position(movies_list)).set_rating(get_rating());
+        cout << termcolor::green << "\nRating was changed!\n" << termcolor::reset;
+        break;
+
+    case 'T': // change title
+    case 't':
+        movies_list.movies.at(get_position(movies_list)).set_name(get_title());
+        cout << termcolor::green << "\nTitle was changed!\n" << termcolor::reset;
+        break;
+
+    case 'W': // change watched
+    case 'w':
+        movies_list.movies.at(get_position(movies_list)).set_watched(get_watched());
+        cout << termcolor::green << "\nNumber was changed!\n" << termcolor::reset;
+        break;
+
+    case 'Z': // display watched
+    case 'z':
+        display_watched(movies_list);
+        break;
+
+    case 'X': // display rating
+    case 'x':
+        display_rating(movies_list);
+        break;
+
+    case 'C': // display films with certain rating
+    case 'c':
+        display_films_w_rating(movies_list);
+        break;
+
+    case 'D': // delete collection
+    case 'd':
+        cout << termcolor::green << "\nCollection was successfully deleted!\n" << termcolor::reset;
+        movies_list.movies.clear();
+        break;
+
+    case 'M': // display menu
     case 'm':
         display_menu();
         break;
 
-    case 'Q':
+    case 'Q': // quit
     case 'q':
         cout << "\nGoodbye!\n\n";
         exit(0);
@@ -81,38 +122,4 @@ void action_choose(string command, Movies &movies)
     }
 
     display_question();
-}
-
-void add_movie(Movies &movies)
-{
-    cin.clear();
-    cout << termcolor::yellow << "\nEnter film title: " << termcolor::reset;
-    string name;
-    getline(cin, name);
-
-    cout << termcolor::yellow << "\nEnter film rating(G, PG, PG-13, R): " << termcolor::reset;
-    string rating;
-    getline(cin, rating);
-
-    cout << termcolor::yellow << "\nEnter number you have watched this film: " << termcolor::reset;
-    unsigned watched;
-    while (!(cin >> watched))
-    {
-        cout << termcolor::red << "\nError! Enter a number: " << termcolor::reset;
-        cin.clear();
-        cin.ignore(123, '\n');
-    }
-
-    if (movies.add_movie(name, rating, watched))
-        cout << termcolor::green << endl
-             << '"' << name << "\" was added!\n"
-             << termcolor::reset;
-    else
-        cout << termcolor::red << endl
-             << '"' << name << "\" already exists!\n"
-             << termcolor::reset;
-}
-
-void increment_watched(Movies &movies, string name)
-{
 }
