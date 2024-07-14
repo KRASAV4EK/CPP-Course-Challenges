@@ -1,6 +1,5 @@
-Section 19
-Challenge 4
-Copy Romeo and Juliet with line numbers
+## Section 19 Challenge 4
+### Copy Romeo and Juliet with line numbers
 
 This challenge should be pretty easy.
 I have provided the text to Romeo and Juliet in a file named romeoandjuliet.txt
