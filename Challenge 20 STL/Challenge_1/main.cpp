@@ -12,7 +12,22 @@ bool is_palindrome(const std::string& s)
 {
     // You must implement this function.
     // Since we are learning the STL - use a deque to solve the problem.
-    return false;
+
+    std::deque<char> deque;
+    for (auto &c : s) {
+        deque.push_back(c);
+    }
+
+    auto front = deque.cbegin();
+    auto end = deque.crbegin();
+
+    for (int i = 0; i < s.size(); i++) {
+        if (*(front++) != *(end++)) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 int main()
