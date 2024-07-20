@@ -57,15 +57,73 @@ void display_menu() {
 void play_current_song(const Song &song) {
     // This function should display 
     // Playing: followed by the song that is playing
-   
-    std::cout << "You implement this function"<< std::endl;
+
+    std::cout << "Current song:" << std::endl << song << std::endl;
 }
 
 void display_playlist(const std::list<Song> &playlist, const Song &current_song) {
     // This function should display the current playlist 
     // and then the current song playing.
-    
-    std::cout << "You implement this function" << std::endl;
+
+    for (auto &song : playlist) {
+        std::cout << song << std::endl;
+    }
+    play_current_song(current_song);
+}
+
+Song get_new_song() {
+    std::string name, artist;
+    int rating;
+    std::cout << "Adding and playing new song" << std::endl;
+    std::cout << "Enter song name: ";
+    std::cin >> name;
+    std::cout << "Enter song artist: ";
+    std::cin >> artist;
+    while (true) {
+        std::cout << "Enter your rating (1-5): ";
+        std::cin >> rating;
+        if (rating < 1 || rating > 5) {
+            std::cerr << "Given rating is incorrect!" << std::endl;
+        } else {
+            break;
+        }
+    }
+    return Song{name, artist, rating};
+}
+
+void process_input(std::list<Song> &playlist, std::list<Song>::iterator &current_song, char &input) {
+    switch (input) {
+        case('F') : {
+            std::cout << "Playing first song..." << std::endl;
+            current_song = playlist.begin();
+            play_current_song(*current_song);
+            break;
+        };
+        case('N') : {
+            std::cout << "Playing next song..." << std::endl;
+            current_song == --playlist.end() ? current_song = playlist.begin() : current_song++;
+            play_current_song(*current_song);
+            break;
+        };
+        case('P') : {
+            std::cout << "Playing previous song..." << std::endl;
+            current_song == playlist.begin() ? current_song = --playlist.end() : current_song--;
+            play_current_song(*current_song);
+            break;
+        };
+        case('A') : {
+            Song new_song = get_new_song();
+            playlist.insert(current_song, new_song);
+            current_song--;
+            play_current_song(*current_song);
+            break;
+        };
+        case('L') : {
+            display_playlist(playlist, *current_song);
+            break;
+        };
+        default:{};
+    }
 }
 
 int main() {
@@ -80,9 +138,17 @@ int main() {
     };
     
     std::list<Song>::iterator current_song = playlist.begin();
-    
-    std::cout << "To be implemented" << std::endl;
-    // Your program logic goes here
+
+    display_playlist(playlist, *current_song);
+
+    char input{};
+
+    while (input != 'Q') {
+        display_menu();
+        std::cin >> input;
+        input = std::toupper(input);
+        process_input(playlist, current_song, input);
+    }
 
     std::cout << "Thanks for listening!" << std::endl;
     return 0;
