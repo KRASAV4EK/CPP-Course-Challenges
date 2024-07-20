@@ -1,13 +1,12 @@
-/*
-Section 20
-Challenge 2
-Using std::list
+## Section 20 Challenge 2
+
+### List Challenge
 
 In this challenge you will create a menu driven application that
 will simulate a user playing songs from a playlist of songs.
 
-We will use a list to simulate the user selecting the the first song in the playlist and
-then selecting next and previous to play forward of backwards through the 
+We will use a list to simulate the user selecting the first song in the playlist and
+then selecting next and previous to play forward of backwards through the
 playlist.
 
 Please refer to the video demo run.
@@ -26,7 +25,7 @@ Enter a selection (Q to quit):
 
 And the available playlist is modeled as a std::list<Song>
 I will provide the Song class. Following are the songs in the playlist.
-I grabbed these from the pop charts, you can use them or change 
+I grabbed these from the pop charts, you can use them or change
 them to any songs you wish.
 
 God's Plan                  Drake                                       5
@@ -40,7 +39,7 @@ I have provided the starting project.
 Have fun!
 
 Note:
-If you have trouble reading input, you can clear std::cin and 
+If you have trouble reading input, you can clear std::cin and
 ignore everything in the buffer with:
 
 std::cin.clear();

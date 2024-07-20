@@ -31,7 +31,7 @@ This function will expect a string and it must determine if that string is a pal
 
 So,
 
-is_palindrome("A Santa at Nasa");   will return true 
+is_palindrome("A Santa at Nasa");   will return true
 is_palindrome("Hello");   will return false
 
 Please use a stack and a queue to solve the problem.

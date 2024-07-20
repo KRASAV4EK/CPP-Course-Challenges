@@ -6,7 +6,7 @@ Using std::set and std::map
 This challenge has 2 parts.
 We will be reading words from a text file provided to you.
 The text file is named 'words.txt' and contains the fist few
-paragraphs from the book, "The Wonderful Wizard of Oz", by 
+paragraphs from the book, "The Wonderful Wizard of Oz", by
 L. Frank Baum.
 
 Part 1:
@@ -61,7 +61,7 @@ once you read in a line from the file.
 Note: I have provided the basic shell for your program.
 I have also provided the functions that display the maps
 as well as the function that cleans the words read.
-You should call the clean_string function for every word 
+You should call the clean_string function for every word
 you read from the file.
 
 Good luck and have fun!!!
