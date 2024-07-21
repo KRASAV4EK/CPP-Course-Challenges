@@ -1,5 +1,6 @@
-Section 20
-Challenge 4 - Stack and Queue Challenge
+## Section 20 Challenge 4
+
+### Stack and Queue
 
 A Palindrome is a string that reads the same backwards or forwards.
 Simple examples are:
@@ -20,7 +21,7 @@ A Santa at Nasa, will be processed as:
 ASANTAATNASA
 
 A common method to solve this problem is to compare the string to its reverse and
-if the are equal then it must be a palindrome. But we will use a deque.
+if they are equal then it must be a palindrome. But we will use a Stack and Queue.
 
 I am providing the main driver for you which will automatically run several test cases.
 You challenge is to write the following function:

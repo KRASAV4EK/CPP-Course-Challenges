@@ -8,11 +8,46 @@
 #include <string>
 #include <iomanip>
 
-bool is_palindrome(const std::string& s)
+// This function removes periods, commas, semicolons and colon in
+// a string and returns the clean version
+std::string clean_string(const std::string &s) {
+    std::string result;
+    for (char c: s) {
+        if (c == '.' || c == ',' || c == ';' || c == ':')
+            continue;
+        else
+            result += c;
+    }
+    return result;
+}
+
+bool is_palindrome(std::string s)
 {
     // You must implement this function.
     // Since we are learning the STL - use a stack and a queue to solve the problem.
-    return false;
+
+    s = clean_string(s);
+
+    std::stack<char> stack;
+    std::queue<char> queue;
+
+    for (char &c : s) {
+        stack.push(c);
+        queue.push(c);
+    }
+
+    char stack_char;
+    char queue_char;
+
+    while (!stack.empty()) {
+        stack_char = stack.top();
+        queue_char = queue.front();
+        stack.pop();
+        queue.pop();
+        if (stack_char != queue_char) return false;
+    }
+
+    return stack.empty();
 }
 
 int main()
