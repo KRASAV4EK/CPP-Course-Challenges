@@ -1,9 +1,8 @@
-/*
-Section 20
-Challenge 3
-Using std::set and std::map
+## Section 20 Challenge 3
 
-This challenge has 2 parts.
+### Set and Map
+
+This challenge has **2 parts**.
 We will be reading words from a text file provided to you.
 The text file is named 'words.txt' and contains the fist few
 paragraphs from the book, "The Wonderful Wizard of Oz", by
@@ -19,14 +18,14 @@ The words should be displayed in ascending order.
 
 Here is a sample listing of the first few words:
 
-Word         Count
-===================
-Aunt                 5
-Dorothy           8
-Dorothy's         1
-Em                   5
-Even                1
-From               1
+* Word         Count
+* ===================
+* Aunt                 5
+* Dorothy           8
+* Dorothy's         1
+* Em                   5
+* Even                1
+* From               1
 
 Please use a map with <string, int> Key/ Value pairs
 
@@ -44,14 +43,14 @@ only appear once.
 
 Here is a sample listing of the first few words:
 
-Word       Occurrences
-============================
-Aunt            [ 2 7 25 29 48 ]
-Dorothy      [ 1 7 15 29 39 43 47 51 ]
-Dorothy's   [ 31 ]
-Em              [ 2 7 25 30 48 ]
-Even           [ 19 ]
-From          [ 50 ]
+* Word       Occurrences
+* ============================
+* Aunt            [ 2 7 25 29 48 ]
+* Dorothy         [ 1 7 15 29 39 43 47 51 ]
+* Dorothy's       [ 31 ]
+* Em              [ 2 7 25 30 48 ]
+* Even            [ 19 ]
+* From            [ 50 ]
 
 Please use a map of <string,set<int>> Key/Value pairs
 

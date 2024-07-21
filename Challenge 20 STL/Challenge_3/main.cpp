@@ -60,12 +60,21 @@ std::string clean_string(const std::string &s) {
 void part1() {
     std::map<std::string, int> words;
     std::string line;       
-    std::string word;   
-    std::ifstream in_file {"../words.txt"};
+    std::string word;
+    std::ifstream in_file {"Challenge 20 STL/Challenge_3/words.txt"};
     if (in_file) {
         
         // You implement this code
-        
+        while (getline(in_file, line)) {
+            line = clean_string(line);
+            std::istringstream iss(line);
+
+            while (iss >> word) {
+                for (auto &c : word) c =  tolower(c);
+                words[word] += 1;
+            }
+        }
+
         in_file.close();
         display_words(words);
     } else {
@@ -79,11 +88,22 @@ void part2() {
     std::map<std::string, std::set<int>> words;
     std::string line;
     std::string word;
-    std::ifstream in_file {"../words.txt"};
+    std::ifstream in_file {"Challenge 20 STL/Challenge_3/words.txt"};
     if (in_file) {
-     
+
         // You implement this code
-        
+        unsigned int line_counter = 1;
+        while(getline(in_file,  line)) {
+            line = clean_string(line);
+            for (char &c : line) c = tolower(c);
+            std::istringstream iss(line);
+
+            while (iss >> word) {
+                words[word].insert(line_counter);
+            }
+            line_counter++;
+        }
+
         in_file.close();
         display_words(words);
     } else {
